@@ -25,18 +25,6 @@ jobs:
         with:
           username: ${{ secret.DOCKER_USERNAME }}
           password: ${{ secret.DOCKER_PASSWORD }}
-          repository: jurocknsail/yncrea-hellomicro
+          repository: skollnope/yncrea-hellomicro
           tag_with_ref: true
           tag_with_sha: true
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-
-      - name: Deploy docs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
-        env:
-          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
