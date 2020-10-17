@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: yncrea-hellomicro-service
+spec:
+  selector:
+    app.kubernetes.io/name: yncrea-hellomicro
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080
+      nodePort: {{ .Values.service.nodePort }}
+    - name: remote-debug
+      protocol: TCP
+      port: 8000
+      targetPort: 8000
+      nodePort: {{ .Values.service.debugNodePort }}
+  type: {{ .Values.service.type }}
